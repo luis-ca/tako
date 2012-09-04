@@ -12,4 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require vendor_manifest.js
 //= require_tree .

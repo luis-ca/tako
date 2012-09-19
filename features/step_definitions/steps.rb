@@ -5,8 +5,9 @@ Given /^I am on newgulpd$/ do
 end
 
 When /^I add a project$/ do
-  # see the form
-  fill_in 'Project_Name', :with => 'New gulpd'
+  # sleep 360
+  sleep 5
+  fill_in 'projectName', :with => 'New gulpd'
   # fill in some details in a form
   # submit the form
 end

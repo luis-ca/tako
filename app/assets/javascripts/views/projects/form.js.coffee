@@ -8,13 +8,15 @@ $ ->
     events:
       "submit": "createProject"
 
+    initialize: ->
+      @projects = @collection
 
     render: ->
       $(@el).html @template()
       @
 
-    createProject: (e)->
+    createProject: (e)=>
       projectName = $("input[name=project_name]", $(@el)).val()
-      $("ul.projects").append "<li>#{projectName}</li>"
+      @projects.add new App.Models.Project name: projectName
       false
 

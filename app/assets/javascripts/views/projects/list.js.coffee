@@ -6,6 +6,13 @@ $ ->
       className: "projects"
       # template: HandlebarsTemplates['projects/project']
 
+      initialize: ->
+        @projects = @collection
+        @projects.on "add", @addOne, @
+
+      addOne: (project)->
+        $(@el).append "<li>#{project.get("name")}</li>"
+
       render: ->
-        # $(@el).append @template()
+        _.each @projects.models, (project)=> @addOne project
         @

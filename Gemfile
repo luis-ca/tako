@@ -6,17 +6,18 @@ gem 'rails', '3.2.8'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mongoid'
-gem "ember-rails"
-gem "handlebars_assets"
-gem "haml_assets"
+# gem "ember-rails"
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-
   gem 'haml'
+  gem 'handlebars_assets', "0.6.5"
+  gem "haml_assets"
+  gem 'coffee-filter'
+
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby

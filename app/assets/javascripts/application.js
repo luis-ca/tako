@@ -13,9 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require vendor_manifest.js
-//= require handlebars
-//= require ember
-//= require ember-data
-//= require_self
-//= require newgulpd
-Newgulpd = Ember.Application.create();
+//= require handlebars.runtime
+//= require namespaces.js
+//= require_tree .

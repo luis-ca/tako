@@ -1,1 +1,2 @@
-//= require_tree .
+//= require underscore-min
+//= require backbone-min

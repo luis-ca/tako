@@ -8,3 +8,11 @@
 
   %body  
     = yield 
+
+
+:coffeescript
+
+  $ -> 
+
+    app = new App.Projects
+    Backbone.history.start()

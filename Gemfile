@@ -17,6 +17,7 @@ group :assets do
   gem 'handlebars_assets', "0.6.5"
   gem "haml_assets"
   gem 'coffee-filter'
+  gem 'bootstrap-sass'
 
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes

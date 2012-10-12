@@ -10,3 +10,9 @@ Feature: Create a project
     Given a project named mindshare
     When I am on newgulpd
     Then I should see a project named mindshare in the list of projects
+
+  Scenario: Show project details
+    Given a project named sushi
+    And I am on newgulpd
+    When I select project sushi from the list
+    Then I should see the project details

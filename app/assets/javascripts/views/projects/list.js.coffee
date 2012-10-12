@@ -4,7 +4,6 @@ $ ->
 
       tagName: "ul"
       className: "projects"
-      # template: HandlebarsTemplates['projects/project']
 
       initialize: ->
 
@@ -14,7 +13,7 @@ $ ->
         @projects.on "reset", @render, @
 
       addOne: (project)->
-        $(@el).append "<li>#{project.get("name")}</li>"
+        $(@el).append "<li><a href='#projects/#{project.get("_id")}'>#{project.get("name")}</a></li>"
 
       render: ->
         $(@el).empty()

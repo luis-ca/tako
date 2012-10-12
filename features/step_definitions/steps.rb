@@ -24,3 +24,13 @@ Then /^I should see a project named (.*) in the list of projects$/ do |project_n
   end
 
 end
+
+When /^I select project (.*) from the list$/ do |project_name|
+  click_link project_name
+end
+
+Then /^I should see the project details$/ do
+  within("#mainSection") do
+    page.should have_content(@project.name)
+  end
+end

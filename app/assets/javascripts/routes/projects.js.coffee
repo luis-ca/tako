@@ -3,10 +3,14 @@ $ ->
   class App.Projects extends Backbone.Router
     
     routes:
+      'projects/:id' : 'showProject'
       '*actions': 'home'
-      
-    initialize: (options)->
+
+    initialize: ->
+      @view = new App.Views.Container
+      @view.render()
 
     home: ->
-      view = new App.Views.Projects
-      $("container").html view.render().el
+
+    showProject: (id) ->
+      @view.showProject(id)

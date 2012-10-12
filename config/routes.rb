@@ -1,6 +1,9 @@
 Newgulpd::Application.routes.draw do
 
-  resources :projects
+  namespace :api do
+    resources :projects  
+  end
+  
   match "/" => "home#index"
 
 end

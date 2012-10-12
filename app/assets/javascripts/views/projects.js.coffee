@@ -5,9 +5,11 @@ class App.Views.Projects extends Backbone.View
 
   initialize: ->
 
-    @projects = new App.Collections.Projects [ { name: "project 1" } ] 
+    @projects = new App.Collections.Projects
+    @projects.fetch()
 
   render: ->
+
     formView = new App.Views.Projects.Form collection: @projects
     $(@el).append formView.render().el
 

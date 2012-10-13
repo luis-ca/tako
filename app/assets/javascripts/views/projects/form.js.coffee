@@ -17,7 +17,11 @@ $ ->
       @
 
     createProject: (e)=>
+      
       projectName = $("input[name=project_name]", $(@el)).val()
-      @projects.add new App.Models.Project name: projectName
+      $("input[name=project_name]", $(@el)).val("")
+
+      @projects.create name: projectName, { wait: true }
+
       false
 

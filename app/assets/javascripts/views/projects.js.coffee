@@ -10,10 +10,10 @@ class App.Views.Projects extends Backbone.View
 
   render: ->
 
-    formView = new App.Views.Projects.Form collection: @projects
-    $(@el).append formView.render().el
-
     listView = new App.Views.Projects.List collection: @projects
     $(@el).append listView.render().el    
+
+    formView = new App.Views.Projects.Form collection: @projects
+    $(@el).append formView.render().el
 
     @

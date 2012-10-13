@@ -6,7 +6,7 @@ class App.Views.Container extends Backbone.View
 
   render: ->
     view = new App.Views.Projects
-    $("#leftSection", @el).html(view.render().el)
+    $("#sidebar", @el).html(view.render().el)
     @
 
   showProject: (id)->
@@ -15,4 +15,4 @@ class App.Views.Container extends Backbone.View
     project.fetch()
     
     view = new App.Views.Projects.Show model: project
-    $("#mainSection", @el).html(view.render().el)
+    $("#main", @el).html(view.render().el)

@@ -3,6 +3,7 @@ $ ->
   class App.Views.Projects.Form extends Backbone.View
 
     tagName: "form"
+    className: "form-inline"
     template: HandlebarsTemplates['projects/form']
 
     events:

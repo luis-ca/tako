@@ -50,6 +50,8 @@ group :development, :test do
   gem 'thin'
   gem 'jasmine'
   gem 'jasmine-rails'
+
+  gem 'pry-debugger'
 end
 
 group :test do

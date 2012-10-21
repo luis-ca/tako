@@ -10,11 +10,14 @@ class Api::ProjectsController < ApplicationController
   end
 
   def create
-    render json:{ _id:Project.create!(name:"california roll")._id }
+
+    params_for_project = params.require(:project).permit(:name)
+    project = Project.create!(params_for_project)
+
+    render json: project
 
   rescue Mongoid::Errors::Validations => e
     render json: {}, status:406
-
   end
 
 end

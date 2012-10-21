@@ -17,9 +17,8 @@ RSpec.configure do |config|
   # config.mock_with :flexmock
   # config.mock_with :rr
 
-  config.before(:suite) do
+  config.before(:each) do
     DatabaseCleaner[:mongoid].strategy = :truncation
-      
     DatabaseCleaner.clean
   end
 

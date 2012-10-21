@@ -8,9 +8,7 @@ describe Api::ProjectsController do
 
       params = { project: { name: Faker::Lorem.words[0] } }
 
-      Project.should_receive(:create!).once.with { |params_for_project|
-        params_for_project.keys.should eq [ "name" ]
-      }
+      Project.should_receive(:create!).once.with_permitted_params(:name)
 
       post :create, params
 

@@ -17,7 +17,7 @@ class Api::ProjectsController < ApplicationController
     render json: project
 
   rescue Mongoid::Errors::Validations => e
-    render json: {}, status:406
+    render json: { :error => 'project already exists' }, status:406
   end
 
 end

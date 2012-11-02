@@ -46,3 +46,8 @@ end
 Then /^I should see the message '(.*)'$/ do |message|
   page.should have_content(message)
 end
+
+Then /^I should see (\d+) project in the list of projects$/ do |count|
+  page.all("ul.projects li").count.should == count.to_i
+
+end

@@ -4,12 +4,12 @@ $ ->
     
     routes:
       'projects/:id' : 'showProject'
-      '*actions': 'home'
 
     initialize: (options)->
       @container = options.container
 
-    home: ->
+      view = new App.Views.Projects
+      @container.addControl view
 
     showProject: (id) ->
 

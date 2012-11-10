@@ -17,23 +17,6 @@
     container = new App.Views.Container
     container.render()
 
-    # TODO: who/ should decide where views are attached to
-
-
-    tickets = new App.Collections.Tickets
-
-    view = new App.Views.Actions.Tickets.New collection: tickets
-    container.addControl view
-
-    view = new App.Views.Projects
-    container.addControl view
-
-    view = new App.Views.Tickets.List collection: tickets
-    container.replaceWorkspace view
-
-    new App.Projects container: container
-    # new App.Tickets container: container
+    window.tickets = new App.Tickets container: container
+    window.projects = new App.Projects container: container
     Backbone.history.start()
-
-    # move actions to App.Tickets, including listing all tickets
-    # call #/tickets after adding a new ticket, so all tickets show and we see what we just added

@@ -2,20 +2,21 @@ $ ->
 
     class App.Views.Tickets.List extends Backbone.View
 
-      tagName: "ul"
+      tagName: "div"
       className: "tickets"
+      template: HandlebarsTemplates['tickets/list']
 
       initialize: ->
 
         @tickets = @collection
-
+        
         @tickets.on "add", @addOne, @
         @tickets.on "reset", @render, @
 
       addOne: (ticket)->
-        $(@el).append "<li>#{ticket.get("name")}</li>"
+        $("ul", @el).append "<li>#{ticket.get("name")}</li>"
 
       render: ->
-        $(@el).empty()
+        $(@el).html @template()
         _.each @tickets.models, (ticket)=> @addOne ticket
         @

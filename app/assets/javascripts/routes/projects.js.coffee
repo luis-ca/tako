@@ -6,11 +6,15 @@ $ ->
       'projects/:id' : 'showProject'
       '*actions': 'home'
 
-    initialize: ->
-      @view = new App.Views.Container
-      @view.render()
+    initialize: (options)->
+      @container = options.container
 
     home: ->
 
     showProject: (id) ->
-      @view.showProject(id)
+
+      project = new App.Models.Project({_id: id})
+      project.fetch()
+      
+      view = new App.Views.Projects.Show model: project
+      @container.replaceWorkspace view

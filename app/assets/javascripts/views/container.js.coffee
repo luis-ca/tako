@@ -5,14 +5,10 @@ class App.Views.Container extends Backbone.View
   initialize: ->
 
   render: ->
-    view = new App.Views.Projects
-    $("#sidebar", @el).html(view.render().el)
     @
 
-  showProject: (id)->
+  addControl:(view) ->
+    $("#sidebar", @el).append(view.render().el)
 
-    project = new App.Models.Project({_id: id})
-    project.fetch()
-    
-    view = new App.Views.Projects.Show model: project
+  replaceWorkspace: (view)->
     $("#main", @el).html(view.render().el)

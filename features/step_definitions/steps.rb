@@ -51,3 +51,15 @@ Then /^I should see (\d+) project in the list of projects$/ do |count|
   page.all("ul.projects li").count.should == count.to_i
 
 end
+
+When /^I add a ticket named (.*)$/ do |ticket_name|
+  click_button "Add new ticket"
+  fill_in "ticket_name", with: ticket_name
+  click_button "Save"
+end
+
+Then /^I should see a ticket named (.*) in the list of tickets$/ do |ticket_name|
+  within("ul.tickets") do
+    page.should have_content(ticket_name)
+  end
+end

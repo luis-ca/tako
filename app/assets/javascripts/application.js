@@ -14,5 +14,7 @@
 //= require jquery_ujs
 //= require vendor_manifest.js
 //= require handlebars.runtime
+//= require bootstrap-modal.js
+
 //= require namespaces.js
 //= require_tree .

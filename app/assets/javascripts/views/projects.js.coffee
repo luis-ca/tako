@@ -4,7 +4,7 @@ class App.Views.Projects extends Backbone.View
   className: ""
 
   initialize: ->
-
+    # TODO: move out projects please
     @projects = new App.Collections.Projects
     @projects.fetch()
 

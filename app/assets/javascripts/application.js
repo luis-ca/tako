@@ -12,4 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require vendor_manifest.js
+//= require handlebars.runtime
+//= require namespaces.js
 //= require_tree .

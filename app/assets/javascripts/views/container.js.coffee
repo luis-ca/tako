@@ -11,4 +11,4 @@ class App.Views.Container extends Backbone.View
     $("#sidebar", @el).append(view.render().el)
 
   replaceWorkspace: (view)->
-    $("#main", @el).html(view.render().el)
+    $("#workspace", @el).html(view.render().el)

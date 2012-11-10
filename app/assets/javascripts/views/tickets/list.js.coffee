@@ -5,16 +5,17 @@ $ ->
       tagName: "div"
       className: "tickets"
       template: HandlebarsTemplates['tickets/list']
+      ticketTemplate: HandlebarsTemplates['tickets/ticket']
 
       initialize: ->
 
         @tickets = @collection
-        
+
         @tickets.on "add", @addOne, @
         @tickets.on "reset", @render, @
 
       addOne: (ticket)->
-        $("ul", @el).append "<li>#{ticket.get("name")}</li>"
+        $("table.tickets > tbody", @el).append @ticketTemplate ticket.toJSON()
 
       render: ->
         $(@el).html @template()

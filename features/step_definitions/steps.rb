@@ -38,7 +38,7 @@ When /^I select the project named (.*) from the list$/ do |project_name|
 end
 
 Then /^I should see the details for the project named (.*)$/ do |project_name|
-  within("#main") do
+  within("#workspace") do
     page.should have_content(project_name)
   end
 end
@@ -53,13 +53,18 @@ Then /^I should see (\d+) project in the list of projects$/ do |count|
 end
 
 When /^I add a ticket named (.*)$/ do |ticket_name|
+
   click_button "Add new ticket"
-  fill_in "ticket_name", with: ticket_name
-  click_button "Save"
+
+  within ".newTicket" do
+    fill_in "ticket_name", with: ticket_name
+    click_on "Create ticket"
+  end
+  
 end
 
 Then /^I should see a ticket named (.*) in the list of tickets$/ do |ticket_name|
-  within("ul.tickets") do
+  within("table.tickets") do
     page.should have_content(ticket_name)
   end
 end

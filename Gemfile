@@ -51,6 +51,7 @@ group :development, :test do
   gem 'jasminerice'
 
   gem 'pry-debugger'
+  
 end
 
 group :test do
@@ -61,6 +62,7 @@ group :test do
   gem 'rb-fsevent'
 
   gem 'cucumber-rails'
+  #gem 'guard-cucumber'
 
   gem 'faker'
   gem "json_spec"
@@ -68,6 +70,7 @@ group :test do
   gem 'growl'
   gem 'database_cleaner'
   gem 'capybara'
+  gem 'poltergeist'
   gem 'launchy'
 
 end

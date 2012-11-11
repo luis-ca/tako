@@ -48,8 +48,7 @@ gem 'jquery-rails', git:'git://github.com/rails/jquery-rails.git', tag: 'v2.0'
 group :development, :test do
 
   gem 'thin'
-  gem 'jasmine'
-  gem 'jasmine-rails'
+  gem 'jasminerice'
 
   gem 'pry-debugger'
 end

@@ -16,3 +16,4 @@
 vendor/gems
 /.jhw-cache
 .DS_Store
+.rvmrc

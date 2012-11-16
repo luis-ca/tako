@@ -2,7 +2,7 @@
   %button.close{ type: 'button', 'data-dismiss' => 'modal', 'aria-hidden' => 'true' } &times;
   %h3 Add new ticket
   .modal-body
-    %input{ type: "text", name: "ticket_name" } 
+    %input{ type: "text", name: "ticket_name" }
   .modal-footer
-    %a.btn Cancel
+    %a.btn{ 'data-dismiss' => 'modal' } Cancel
     %input.btn.btn-small.btn-success{ type: "submit", value: "Create ticket" }

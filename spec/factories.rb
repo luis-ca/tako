@@ -1,6 +1,9 @@
 FactoryGirl.define do
-  
+
   factory :project, class: Project do
-  end  
+  end
+
+  factory :ticket, class: Ticket do
+  end
 
 end

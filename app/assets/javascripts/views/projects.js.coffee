@@ -1,7 +1,7 @@
 class App.Views.Projects extends Backbone.View
 
   tagName: "div"
-  className: ""
+  className: "control projects"
 
   initialize: ->
     # TODO: move out projects please

@@ -41,14 +41,14 @@ describe Api::ProjectsController do
 
   end  
 
-  # it "should return a JSON representation of the error messages" do
+  it "should return a JSON representation of the error messages" do
 
-  #   FactoryGirl.create :project, name: "toro"
-  #   post "api/projects", { project: { name: "toro" } }
+    FactoryGirl.create :project, name: "toro"
+    post "api/projects", { project: { name: "toro" } }
 
-  #   json_response = JSON.parse(response.body)
-  #   json_response['message'].should_not be_nil
+    json_response = JSON.parse(response.body)
+    json_response['name'].should eq [ "is already taken" ]
 
-  # end
+  end
 
 end

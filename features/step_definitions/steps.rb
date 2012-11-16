@@ -10,8 +10,11 @@ end
 
 When /^I add a project named (.*)$/ do |project_name|
 
-  fill_in('project_name', with: project_name)
-  click_button("Save")
+  within "div.projects.control" do
+    click_link "show"
+    fill_in('project_name', with: project_name)
+    click_button("Save")
+  end
 
 end
 

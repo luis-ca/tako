@@ -13,5 +13,5 @@ Feature: Create a project
     Given a project named sashimi
     And I am on the application
     When I add a project named sashimi
-    Then I should see the message 'project already exists'
+    Then I should see the message 'name is already taken'
     And I should see 1 project in the list of projects

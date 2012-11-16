@@ -1,26 +1,72 @@
 #sidebar
   
+  > .projects.control
+    > .projects
+      background-color: #DFDFDF
+      h2
+        border-top: 1px solid #E0E0E0
+        border-right: 1px solid #E0E0E0
+        display: inline-block
+        background-color: #EAEAEA
+        font-size: 0.7em
+        font-weight: 300
+        text-transform: uppercase
+        padding: 7px 10px
+        color: #999
+
   form
-    padding: 5px
-    background-color: #EAEAEA
-    border-top: 2px solid #DFDFDF
-    label
-      margin: 0
+    padding: 0px 5px
+    margin: 0
+    background-color: #E3E3E3
+
+    input[type=text]
+      width: 250px
+      margin-top: 10px
+      font-size: 0.9em
+
+    input[type=submit]
+      margin-bottom: 10px
+      margin-left: 2px
+
+    input::-webkit-input-placeholder
+      color: #DDD
+    input:-moz-placeholder
+      color: #DDD
+
+    a#show
+      opacity: 0.5
+      display: inline-block
+      float: right
+      cursor: pointer
       font-size: 0.8em
-      margin-left: 5px
-      color: #999
+      padding: 5px
+      background-color: #DFDFDF
+      border-radius: 0 0 10px 10px
+      &:hover 
+        opacity: 1.0
+
+    span.help-inline
+      font-size: 0.8em
+
 
   ul.projects
     margin: 0
     padding: 0
-    border-top: 1px solid #DFDFDF
     li
       list-style: none
       a
         display: block
         background-color: #EAEAEA
+        border-left: 3px solid #EAEAEA
         border-bottom: 1px solid #DFDFDF
-        padding: 5px 10px
+        padding: 5px 10px 5px 7px
+        font-size: 0.9em
         &:hover
           text-decoration: none
           background-color: #E3E3E3
+
+    li.active
+      a
+        background-color: #E0E0E0
+        border-left-color: #999
+        border-top: 1px solid #CCC

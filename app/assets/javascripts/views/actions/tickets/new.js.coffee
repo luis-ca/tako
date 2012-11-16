@@ -15,12 +15,12 @@ class App.Views.Actions.Tickets.New extends Backbone.View
     @
 
   new: ->
-    view = new App.Views.Tickets.New
+    view = new App.Views.Tickets.New collection: @tickets
 
     view.render()
     view.on "submit", @create, @
     false
 
   create: (params) ->
-    @tickets.add { number: @tickets.length + 1, name: params.ticket_name }
-    tickets.navigate "tickets", { trigger: true }
+    @tickets.create { wait: true, name: params.ticket_name }
+    # tickets.navigate "tickets", { trigger: true }

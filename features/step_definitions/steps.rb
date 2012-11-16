@@ -1,8 +1,5 @@
 World(Rack::Test::Methods)
 
-require 'capybara/poltergeist'
-Capybara.javascript_driver = :poltergeist
-
 Given /^I am on the application$/ do
   visit("/")
 end

@@ -22,5 +22,5 @@ class App.Views.Actions.Tickets.New extends Backbone.View
     false
 
   create: (params) ->
-    @tickets.create { wait: true, name: params.ticket_name }
+    @tickets.create { name: params.ticket_name }, { wait: true }
     # tickets.navigate "tickets", { trigger: true }

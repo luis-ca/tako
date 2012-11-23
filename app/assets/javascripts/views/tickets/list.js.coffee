@@ -10,7 +10,7 @@ $ ->
       initialize: ->
 
         @tickets = @collection
-
+        
         @tickets.on "add", @addOne, @
         @tickets.on "reset", @render, @
 

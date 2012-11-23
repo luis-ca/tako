@@ -3,12 +3,17 @@ class App.Views.Container extends Backbone.View
   el: "container"
 
   initialize: ->
+    @controls = {}
 
   render: ->
     @
 
-  addControl:(view) ->
-    $("#sidebar", @el).append(view.render().el)
+  addControl: (key, control)->
+    @controls[key] = control
+    $("#sidebar", @el).append(control.render().el)
+
+  getControl: (key)->
+    @controls[key]
 
   replaceWorkspace: (view)->
     $("#workspace", @el).html(view.render().el)

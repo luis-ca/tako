@@ -8,13 +8,14 @@ $ ->
     initialize: (options)->
 
       @container = options.container
-      @tickets   = new App.Collections.Tickets
+      @tickets   = options.collection
       @tickets.fetch()
 
-      view = new App.Views.Actions.Tickets.New collection: @tickets
-      @container.addControl view
       @list()
 
     list: ->
+
       view = new App.Views.Tickets.List collection: @tickets
       @container.replaceWorkspace view
+
+      @container.getControl("listOfProjects").reset()

@@ -1,29 +1,30 @@
 $ ->
 
-    class App.Views.Projects.List extends Backbone.View
+  class App.Views.Projects.List extends Backbone.View
 
-      tagName: "div"
-      className: "projects"
-      template: HandlebarsTemplates['projects/list']
+    tagName: "div"
+    className: "projects"
+    template: HandlebarsTemplates['projects/list']
 
-      events:
-        "click ul > li": "selectProject"
+    initialize: ->
 
-      initialize: ->
+      @projects = @collection
 
-        @projects = @collection
+      @projects.on "add", @addOne, @
+      @projects.on "reset", @render, @
 
-        @projects.on "add", @addOne, @
-        @projects.on "reset", @render, @
+    addOne: (project)->
+      $("ul.projects", @el).append "<li data-id='#{project.get("_id")}' class='#{'active' if project.get("_id") == @selected}'><a href='#projects/#{project.get("_id")}'>#{project.get("name")}</a></li>"
 
-      addOne: (project)->
-        $("ul.projects", @el).append "<li><a href='#projects/#{project.get("_id")}'>#{project.get("name")}</a></li>"
+    render: ->
+      $(@el).html @template()
+      _.each @projects.models, (project)=> @addOne project
+      @
 
-      render: ->
-        $(@el).html @template()
-        _.each @projects.models, (project)=> @addOne project
-        @
+    select: (id)->
+      @selected = id
+      @render()
 
-      selectProject: (e)->
-        $("ul.projects li").removeClass "active"
-        $(e.currentTarget).addClass "active"
+    deselect: ()->
+      @selected = null
+      @render()

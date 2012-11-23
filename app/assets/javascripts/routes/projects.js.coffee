@@ -6,15 +6,16 @@ $ ->
       'projects/:id' : 'showProject'
 
     initialize: (options)->
-      @container = options.container
 
-      view = new App.Views.Projects
-      @container.addControl view
+      @container = options.container
+      @controlView = @container.getControl "listOfProjects"
 
     showProject: (id) ->
 
       project = new App.Models.Project({_id: id})
       project.fetch()
+
+      @controlView.select id
       
       view = new App.Views.Projects.Show model: project
       @container.replaceWorkspace view

@@ -13,7 +13,7 @@ $ ->
       @projects = @collection
 
     render: ->
-      $(@el).html "<a id='show' href='#'><i class='icon-plus'></i></a>"
+      $(@el).empty()
       @
 
     show: ->

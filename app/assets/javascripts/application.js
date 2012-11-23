@@ -17,4 +17,5 @@
 //= require bootstrap-modal.js
 
 //= require namespaces.js
+//= require util.js
 //= require_tree .

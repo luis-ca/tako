@@ -3,17 +3,29 @@ class App.Views.Projects extends Backbone.View
   tagName: "div"
   className: "control projects"
 
-  initialize: ->
-    # TODO: move out projects please
-    @projects = new App.Collections.Projects
+  events: 
+    "click a#show": "showForm"
+
+  initialize: ()->
+
+    @projects = @collection
     @projects.fetch()
 
   render: ->
 
-    listView = new App.Views.Projects.List collection: @projects
-    $(@el).append listView.render().el    
+    @listView = new App.Views.Projects.List collection: @projects
+    $(@el).append @listView.render().el
 
-    formView = new App.Views.Projects.Form collection: @projects
-    $(@el).append formView.render().el
+    @formView = new App.Views.Projects.Form collection: @projects
+    $(@el).append @formView.render().el
 
     @
+
+  select: (id)->
+    @listView.select id
+
+  reset: ->
+    @listView.deselect()
+
+  showForm: ->
+    @formView.show()

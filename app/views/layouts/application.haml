@@ -17,6 +17,18 @@
     container = new App.Views.Container
     container.render()
 
-    window.tickets = new App.Tickets container: container
-    window.projects = new App.Projects container: container
+    # collections
+    tickets  = new App.Collections.Tickets()
+    projects = new App.Collections.Projects()
+
+    # controls
+    view = new App.Views.Actions.Tickets.New collection: tickets
+    container.addControl "newTicket", view
+
+    container.addControl "listOfProjects", new App.Views.Projects collection: projects
+
+    # routers
+    window.tickets  = new App.Tickets  container: container, collection: tickets
+    window.projects = new App.Projects container: container, collection: projects
+
     Backbone.history.start()

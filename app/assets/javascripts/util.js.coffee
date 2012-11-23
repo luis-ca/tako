@@ -1,0 +1,1 @@
+window.debug = (m)-> console.debug(m) if window.console

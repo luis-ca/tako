@@ -6,7 +6,10 @@ $ ->
     template: HandlebarsTemplates["tickets/new"]
 
     events:
-      'click input[type=submit]': 'submit'
+      'click input[type=submit]': 'createTicket'
+
+    initialize: ->
+      @tickets = @collection
 
     render: ->
       $(@el).html(@template())
@@ -15,6 +18,7 @@ $ ->
       $('.newTicket').on('hidden', $.proxy(@remove, @))
       @
 
-    submit: (e)->
-      @trigger 'submit', { ticket_name: $("input[name=ticket_name]", $(@el)).val() }
+    createTicket: (e)->
+      ticket  = { ticket_name: $("input[name=ticket_name]", $(@el)).val() }
+      @trigger( 'submit', ticket)
       $('.newTicket').modal('hide')

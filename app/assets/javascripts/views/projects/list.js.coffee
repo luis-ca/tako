@@ -14,7 +14,7 @@ $ ->
       @projects.on "reset", @render, @
 
     addOne: (project)->
-      $("ul.projects", @el).append "<li data-id='#{project.get("_id")}' class='#{'active' if project.get("_id") == @selected}'><a href='#projects/#{project.get("_id")}'>#{project.get("name")}</a></li>"
+      $("ul.projects li#all", @el).before "<li data-id='#{project.get("_id")}' class='#{'active' if project.get("_id") == @selected}'><a href='#projects/#{project.get("_id")}'>#{project.get("name")}</a></li>"
 
     render: ->
       $(@el).html @template()

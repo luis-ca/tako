@@ -22,6 +22,10 @@ When /^I click create a new project$/ do
   click_button "create a new project"
 end
 
+When /^I choose All tickets$/ do
+  click_link "All tickets"
+end
+
 Then /^I should see the new project form$/ do
   pending # express the regexp above with the code you wish you had
 end

@@ -1,23 +1,32 @@
 $ ->
+  class App.Views.Tickets.List extends Backbone.View
 
-    class App.Views.Tickets.List extends Backbone.View
+    tagName: "div"
+    className: "tickets"
+    template: HandlebarsTemplates['tickets/list']
+    ticketTemplate: HandlebarsTemplates['tickets/ticket']
 
-      tagName: "div"
-      className: "tickets"
-      template: HandlebarsTemplates['tickets/list']
-      ticketTemplate: HandlebarsTemplates['tickets/ticket']
+    events:
+      "keyup input#new": "createOnReturn"
 
-      initialize: ->
+    initialize: ->
 
-        @tickets = @collection
-        
-        @tickets.on "add", @addOne, @
-        @tickets.on "reset", @render, @
+      @tickets = @collection
+      
+      @tickets.on "add", @addOne, @
+      @tickets.on "reset", @render, @
 
-      addOne: (ticket)->
-        $("table.tickets > tbody", @el).append @ticketTemplate ticket.toJSON()
+    addOne: (ticket)->
+      $("table.tickets > tbody", @el).append @ticketTemplate ticket.toJSON()
 
-      render: ->
-        $(@el).html @template()
-        _.each @tickets.models, (ticket)=> @addOne ticket
-        @
+    render: ->
+      $(@el).html @template()
+      _.each @tickets.models, (ticket)=> @addOne ticket
+      @
+
+    createOnReturn: (e)->
+
+      if e.keyCode == 13
+        input = $(e.currentTarget)
+        @tickets.create { name: input.val() }, { wait: true }
+        input.val("")

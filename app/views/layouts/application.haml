@@ -22,9 +22,6 @@
     projects = new App.Collections.Projects()
 
     # controls
-    view = new App.Views.Actions.Tickets.New collection: tickets
-    container.addControl "newTicket", view
-
     container.addControl "listOfProjects", new App.Views.Projects collection: projects
 
     # routers

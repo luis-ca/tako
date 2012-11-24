@@ -18,20 +18,6 @@ When /^I add a project named (.*)$/ do |project_name|
 
 end
 
-When /^I click create a new project$/ do
-  click_button "create a new project"
-end
-
-When /^I choose All tickets$/ do
-  click_link "All tickets"
-end
-
-Then /^I should see the new project form$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
-
-
 Then /^I should see a project named (.*) in the list of projects$/ do |project_name|
 
   within("ul.projects") do
@@ -55,7 +41,6 @@ Then /^I should see the message '(.*)'$/ do |message|
 end
 
 Then /^I should see (\d+) project in the list of projects$/ do |count|
-  page.all("ul.projects li").count.should == count.to_i
+  page.all("ul.projects li:not(#all)").count.should == count.to_i
 
 end
-

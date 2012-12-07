@@ -9,13 +9,10 @@ $ ->
 
       @container = options.container
       @tickets   = options.collection
-      @tickets.fetch()
-
-      @list()
 
     list: ->
 
-      view = new App.Views.Tickets.List collection: @tickets
+      view = new App.Views.Tickets.All collection: @tickets
       @container.replaceWorkspace view
 
       @container.getControl("listOfProjects").reset()

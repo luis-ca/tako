@@ -2,30 +2,33 @@
 %html
   %head
     %title Newgulpd
-    = stylesheet_link_tag    "application", 'http://fonts.googleapis.com/css?family=Droid+Sans:400,700', media: "all" 
-    = javascript_include_tag "application" 
-    = csrf_meta_tags 
+    = stylesheet_link_tag    "application", 'http://fonts.googleapis.com/css?family=Droid+Sans:400,700', media: "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
 
-  %body  
-    = yield 
+  %body
+    = yield
 
 
 :coffeescript
 
-  $ -> 
+  $ ->
 
     container = new App.Views.Container
     container.render()
 
     # collections
     tickets  = new App.Collections.Tickets()
+    tickets.fetch()
+
     projects = new App.Collections.Projects()
+    projects.fetch()
 
     # controls
     container.addControl "listOfProjects", new App.Views.Projects collection: projects
 
     # routers
     window.tickets  = new App.Tickets  container: container, collection: tickets
-    window.projects = new App.Projects container: container, collection: projects
+    window.projects = new App.Projects container: container, collection: projects, tickets: tickets
 
     Backbone.history.start()

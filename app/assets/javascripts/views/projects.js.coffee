@@ -3,13 +3,12 @@ class App.Views.Projects extends Backbone.View
   tagName: "div"
   className: "control projects"
 
-  events: 
+  events:
     "click a#show": "showForm"
 
   initialize: ()->
 
     @projects = @collection
-    @projects.fetch()
 
   render: ->
 

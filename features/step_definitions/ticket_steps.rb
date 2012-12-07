@@ -2,8 +2,10 @@ Given /^a ticket (.*) exists$/ do |ticket_name|
   FactoryGirl.create :ticket, name: ticket_name
 end
 
-Given /^I choose All tickets$/ do
-  click_link "All tickets"
+Given /^I choose (.*)$/ do |project_name_or_all_tickets|
+  within "div#sidebar" do
+    click_link project_name_or_all_tickets
+  end
 end
 
 When /^I add a ticket named (.*)$/ do |ticket_name|
@@ -11,7 +13,7 @@ When /^I add a ticket named (.*)$/ do |ticket_name|
   within "table.tickets" do
 
     fill_in "new", with: ticket_name
-    
+
     if Capybara.javascript_driver == :poltergeist
       keypress_script = "var e = $.Event('keyup', { keyCode: 13 }); $('table.tickets input#new}}').trigger(e);"
       page.driver.execute_script(keypress_script)
@@ -32,4 +34,14 @@ Then /^I should see a ticket named (.*) and numbered as (\d+) in the list of tic
       page.should have_content(ticket_name)
     end
   end
+end
+
+Given /^I am on the (.*) project$/ do |project_name|
+  FactoryGirl.create :project, name: project_name
+  step "I am on the application"
+  step "I choose #{project_name}"
+end
+
+Then /^I should see a ticket named rice tagged with sushi$/ do
+  pending # express the regexp above with the code you wish you had
 end

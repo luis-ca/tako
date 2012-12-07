@@ -4,11 +4,15 @@ class App.Views.Projects.Show extends Backbone.View
   className: ""
   template: HandlebarsTemplates["projects/show"]
 
-  initialize: ()->
+  initialize: ({tickets: tickets})->
 
+    @tickets = tickets
     @project = @model
     @project.on "change", @render, @
 
   render: ->
     $(@el).html @template new App.ViewModels.Project(@project)
+
+    view = new App.Views.Tickets.List collection: @tickets
+    $(@el).append view.render().el
     @

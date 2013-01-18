@@ -1,5 +1,5 @@
-Given /^a ticket (.*) exists$/ do |ticket_name|
-  FactoryGirl.create :ticket, name: ticket_name
+Given /^a ticket exists$/ do
+  @ticket = FactoryGirl.create :ticket, name: Faker::Lorem.words[0]
 end
 
 Given /^I choose (.*)$/ do |project_name_or_all_tickets|
@@ -23,15 +23,40 @@ When /^I add a ticket named (.*)$/ do |ticket_name|
 
   end
 
+  # TODO: waiting for test to create ticket, want to fix this some other way...
+  sleep 1
+  @ticket = Ticket.find_by( name: ticket_name )
+
 end
 
-Then /^I should see a ticket named (.*) and numbered as (\d+) in the list of tickets$/ do |ticket_name, ticket_number|
+Then /^I should see the ticket$/ do
   within("table.tickets") do
-    within("td.ticketNumber")do
-      page.should have_content(ticket_number)
+    within("td.ticketName")do
+      page.should have_content(@ticket.name)
     end
+  end
+end
+
+Then /^I should see a ticket named (.*)$/ do |ticket_name|
+  within("table.tickets") do
     within("td.ticketName")do
       page.should have_content(ticket_name)
+    end
+  end
+end
+
+Then /^I should see the ticket number$/ do
+  within("table.tickets") do
+    within("td.ticketNumber")do
+      page.should have_content(@ticket.number)
+    end
+  end
+end
+
+Then /^I should see the ticket tag (.*)$/ do |tag|
+  within("table.tickets") do
+    within("td.ticketTags")do
+      page.should have_content(tag)
     end
   end
 end
@@ -40,8 +65,4 @@ Given /^I am on the (.*) project$/ do |project_name|
   FactoryGirl.create :project, name: project_name
   step "I am on the application"
   step "I choose #{project_name}"
-end
-
-Then /^I should see a ticket named rice tagged with sushi$/ do
-  pending # express the regexp above with the code you wish you had
 end

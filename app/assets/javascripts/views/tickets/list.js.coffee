@@ -12,12 +12,13 @@ $ ->
     initialize: ->
 
       @tickets = @collection
-      
+
       @tickets.on "add", @addOne, @
       @tickets.on "reset", @render, @
 
     addOne: (ticket)->
-      $("table.tickets > tbody", @el).append @ticketTemplate ticket.toJSON()
+      viewModel = new App.ViewModels.Ticket(ticket)
+      $("table.tickets > tbody", @el).append @ticketTemplate viewModel
 
     render: ->
       $(@el).html @template()

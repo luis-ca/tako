@@ -1,52 +1,69 @@
 #workspace
-  > .tickets
 
-    table.tickets
-      width: 100%
+  table.tickets
+    width: 100%
 
+    tr
+      border-bottom: 1px solid #EFEFEF
+      th, td
+        padding: 7px
+
+      th:first-child, td:first-child
+        padding-left: 20px
+
+    > thead, > tbody
       tr
         border-bottom: 1px solid #EFEFEF
         th, td
+          white-space: nowrap
           padding: 7px
+        th:first-child
+          text-align: center
+        td:first-child
+          text-align: right
 
-        th:first-child, td:first-child
-          padding-left: 20px
+        td:last-child
+          width: 100%
 
-      > thead, > tbody
-        tr
-          border-bottom: 1px solid #EFEFEF
-          th, td
-            padding: 7px
-          th:first-child
-            text-align: center
-          td:first-child
-            text-align: right
+    > thead
+      tr
+        border-bottom: 4px solid #EFEFEF
+      th
+        font-size: 0.9em
+        text-align: left
 
-          td.ticketName
-            width: 100%
+    > tbody
+      td
+        font-size: 0.9em
 
-      > thead
-        tr
-          border-bottom: 4px solid #EFEFEF
-        th
-          font-size: 0.9em
-          text-align: left
-      > tbody
+      td.ticketName
+        input
+          display: inline
+          font-size: inherit
+          padding: 0
+          margin: 0
+          border: 0
+
+      td.ticketTags
+        span.tag
+          display: inline-block
+          background-color: #EFEFEF
+          border-radius: 5px
+          padding: 1px 5px
+
+
+    > tfoot
+
+      tr
+        background-color: #F3F3F3
         td
+          text-align: left
+        span.icon-edit
+          margin-top: 2px
+        input#new
+          margin: 0
+          border: none
+          box-shadow: none
+          width: 90%
+          background-color: transparent
           font-size: 0.9em
-
-      > tfoot
-      
-        tr
-          background-color: #F3F3F3
-          td
-            text-align: left
-          span.icon-edit
-            margin-top: 2px
-          input#new
-            margin: 0
-            border: none
-            box-shadow: none
-            width: 90%
-            background-color: transparent
-            font-size: 0.9em

@@ -1,4 +1,7 @@
 %tr
   %td.ticketNumber {{ticket.number}}
   %td.ticketName {{ticket.name}}
-  %td.ticketTags {{tags.tagsAsList}}
+  %td.ticketTags
+    {{#each tags.tagList}}
+    %span.tag {{this.name}}
+    {{/each}}

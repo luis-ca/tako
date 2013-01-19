@@ -1,8 +1,7 @@
 class App.ViewModels.Tags
 
   constructor: (@_tags)->
-    @tagsAsList = @tags()
+    @tags = _.map @_tags, (tag)-> new App.ViewModels.Tag(tag)
 
-  tags: =>
-    tagNames = _.map @_tags, (tag) -> tag.get 'name'
-    tagNames.join ", "
+  tagsAsList: ->
+    _.map( @_tags, (tag)-> tag.get("name") ).join ", "

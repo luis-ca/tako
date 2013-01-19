@@ -17,8 +17,12 @@ $ ->
       @tickets.on "reset", @render, @
 
     addOne: (ticket)->
+
       ticketViewModel = new App.ViewModels.Ticket(ticket)
-      tagsViewModels = new App.ViewModels.Tags(new App.Models.Tag(name: "tag1"), new App.Models.Tag(name: "tag2"))
+
+      tags = [ new App.Models.Tag(name: "tag1"), new App.Models.Tag(name: "tag2") ]
+      tagsViewModels = new App.ViewModels.Tags( tags )
+
       $("table.tickets > tbody", @el).append @ticketTemplate ticket: ticketViewModel, tags: tagsViewModels
 
     render: ->

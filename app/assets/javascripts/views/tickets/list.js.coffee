@@ -20,6 +20,7 @@ $ ->
 
       ticketViewModel = new App.ViewModels.Ticket(ticket)
 
+      #### next, we need to drive Tag and Tag.find_by_ticket or something
       tags = [ new App.Models.Tag(name: "tag1"), new App.Models.Tag(name: "tag2") ]
       tagsViewModels = new App.ViewModels.Tags( tags )
 

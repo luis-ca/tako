@@ -16,15 +16,16 @@ $ ->
       @tickets.on "add", @addOne, @
       @tickets.on "reset", @render, @
 
-    addOne: (ticket)->
+    addOne: ( ticket )->
 
-      ticketViewModel = new App.ViewModels.Ticket(ticket)
+      ticketViewModel = new App.ViewModels.Ticket ticket
 
-      #### next, we need to drive Tag and Tag.find_by_ticket or something
-      tags = [ new App.Models.Tag(name: "tag1"), new App.Models.Tag(name: "tag2") ]
-      tagsViewModels = new App.ViewModels.Tags( tags )
+      tags = new App.Collections.Tags [], scope: ticket
 
-      $("table.tickets > tbody", @el).append @ticketTemplate ticket: ticketViewModel, tags: tagsViewModels
+      tags.fetch
+        success: =>
+          tagsViewModels = new App.ViewModels.Tags tags
+          $("table.tickets > tbody", @el).append @ticketTemplate ticket: ticketViewModel, tags: tagsViewModels
 
     render: ->
       $(@el).html @template()

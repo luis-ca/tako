@@ -1,7 +1,7 @@
 class Api::TagsController < ActionController::Base
 
   def index
-    render json: Tag.all
+  	taggings = Tagging.where(taggable: params[:scope_id])
+    render json: taggings.map {|tagging| Project.find tagging.tag }
   end
-
 end

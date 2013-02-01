@@ -9,10 +9,11 @@ $ ->
     events:
       "keyup input#new": "createOnReturn"
 
-    initialize: ->
+    initialize: ({tag: tag})->
 
       @tickets = @collection
-
+      @tag = tag 
+      
       @tickets.on "add", @addOne, @
       @tickets.on "reset", @render, @
 
@@ -36,5 +37,9 @@ $ ->
 
       if e.keyCode == 13
         input = $(e.currentTarget)
-        @tickets.create { name: input.val() }, { wait: true }
+        @tickets.create { name: input.val() }, { wait: true, success: (ticket)=> 
+          tag = new App.Models.Tagging { tag: @tag, taggable: ticket }
+          tag.save { wait: true } 
+        }
+
         input.val("")

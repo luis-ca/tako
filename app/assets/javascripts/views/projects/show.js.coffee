@@ -12,7 +12,7 @@ class App.Views.Projects.Show extends Backbone.View
 
   render: ->
     $(@el).html @template new App.ViewModels.Project(@project)
+    view = new App.Views.Tickets.List collection: @tickets, tag: @project
 
-    view = new App.Views.Tickets.List collection: @tickets
     $(@el).append view.render().el
     @

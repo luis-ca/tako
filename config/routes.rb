@@ -4,6 +4,7 @@ Newgulpd::Application.routes.draw do
     resources :projects
     resources :tickets
     resources :tags
+    resources :taggings
   end
 
   match "/" => "home#index"
